@@ -1,4 +1,11 @@
 <div class="task">
   <h3> {{ task.text }} </h3>
+    <button
+      class="but"
+      style="background-color: red; font-size: 8"
+      (click)="onDelete()"
+    >
+      X
+    </button>
   <p> {{ task.day }} </p>
 </div>

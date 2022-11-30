@@ -10,5 +10,10 @@ export class TaskItemComponent {
 
   @Input() task: Task = {} as Task;
 
+  onDelete() {
+    console.log('deleting task:');
+    console.log(this.task);
+  }
+
 }
  
