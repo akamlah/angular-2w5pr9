@@ -1,14 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from '../../Task'
-import { TASKS } from '../../mock-tasks'
- 
+import { TaskService } from '../../services/task.service' 
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
 
-  tasks: Task[] = TASKS;
+  tasks: Task[] = [];
+
+  // use service: add it as a provider in a constructor:
+  // this.task.service...
+  constructor(private taskService: TaskService) {}
+
+  // ususlly you would do that with observables and async bcs data would come from server
+  ngOnInit() {
+    this.tasks = this.taskService.getTasks();
+  }
 
 }
