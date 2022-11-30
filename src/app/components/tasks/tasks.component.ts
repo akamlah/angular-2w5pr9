@@ -15,9 +15,13 @@ export class TasksComponent implements OnInit {
   // this.task.service...
   constructor(private taskService: TaskService) {}
 
-  // ususlly you would do that with observables and async bcs data would come from server
-  ngOnInit() {
-    this.tasks = this.taskService.getTasks();
+  ngOnInit(): void {    
+    // usually you would do that with observables and async bcs data would come from server
+    // this.tasks = this.taskService.getTasks();
+  
+    // use an observable-> you have to SUBSCRIBE to it and watch it.
+    this.taskService.getTasks().subscribe((tasks) => this.tasks = tasks);
+    // last "tasks" is the one that the observable returns
   }
 
 }
